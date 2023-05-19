@@ -35,7 +35,7 @@ public class MessageServiceGenerator {
             Integer delay=random.nextInt(1000);
             Boolean hasCallBack=random.nextBoolean();
             Message mess=new Message(message,key,priority,delay,hasCallBack);
-            final Content postResult = Request.Post("http://localhost:8080/emit")
+            final Content postResult = Request.Post("http://server:8080/emit")
                     .bodyString(GSON.toJson(mess), ContentType.APPLICATION_JSON)
                     .execute().returnContent();
         }
