@@ -1,0 +1,7 @@
+{
+    "message" : "Hello",
+    "key" : "priority",
+    "priority" : 10,
+    "delay" : 100,
+    "hasCallBack": true
+}

@@ -1,0 +1,1 @@
+curl -X POST http://localhost:8080/emit -H "Content-Type: application/json" -d ./postman.json

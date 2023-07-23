@@ -40,7 +40,7 @@ public class Listener {
         boolean hasCallBack=Boolean.parseBoolean(strings[2]);
         try{
         if (hasCallBack){
-            final Content postResult = Request.Post("http://localhost:8080/print")
+            final Content postResult = Request.Post("http://server:8080/print")
                     .bodyString("{\"title\": \"callback\",\"body\":\"Message has processed successfully\"}", ContentType.APPLICATION_JSON)
                     .execute().returnContent();
         }}

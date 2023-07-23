@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  rabbitmq:
+    # image: 'rabbitmq:3.12-rc-alpine'
+    image: 'rabbitmq:3-management'
+    # image: 'bitnami/rabbitmq:latest'
+    networks:
+      - app-tier
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      - RABBITMQ_NODE_PORT_NUMBER=5672
+      - RABBITMQ_MANAGEMENT_PORT_NUMBER=15672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+    
+  server:
+    build: MessageServiceServer
+    depends_on:
+      - rabbitmq
+    ports:
+      - 8080:8080
+    # extra_hosts:
+    # - "docker.for.mac.host.internal:host-gateway"
+    networks:
+      - app-tier
+
+  consumer:
+    build: MessageServiceConsumer
+    depends_on:
+      - rabbitmq
+      - server
+    ports:
+      - 8086:8086
+    networks:
+      - app-tier
+
+  
+
+networks:
+  app-tier:
+    driver: bridge

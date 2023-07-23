@@ -19,7 +19,8 @@ public class RabbitConfig {
 
     Logger logger=  LoggerFactory.getLogger(RabbitConfig.class);
     @Bean
-    public ConnectionFactory connectionFactory(){return new CachingConnectionFactory("localhost");
+    public ConnectionFactory connectionFactory(){return new CachingConnectionFactory("rabbitmq");
+    // public ConnectionFactory connectionFactory(){return new CachingConnectionFactory("localhost");
     }
 
     @Bean
